@@ -16,4 +16,5 @@
     <dubbo:service interface="dubboApi.DemoService" ref="demoService" protocol="dubbo" />
     <!--具体实现该接口的 bean-->
     <bean id="demoService" class="dubboProvider.DemoServiceImpl"/>
+
 </beans>
