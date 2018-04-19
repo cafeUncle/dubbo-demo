@@ -15,7 +15,6 @@
     <dubbo:registry address="zookeeper://192.168.0.200:2181"/>
 
     <!-- 用dubbo协议在20881端口暴露服务，同时启动两种provider时端口不能冲突，换一个端口 -->
-    <!-- 使用Dubbo协议的服务会在初始化时建立长连接-->
     <dubbo:protocol name="dubbo" port="20881"/>
 
     <!-- 注解方式装配, 不指定包名的话会在spring bean中查找配置了dubbo注解的对应实例的类 -->

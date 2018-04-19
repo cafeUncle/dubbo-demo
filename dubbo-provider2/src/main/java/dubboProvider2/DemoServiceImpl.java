@@ -6,7 +6,7 @@ import dubboApi.DemoService;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Service(version = "1.0")
 public class DemoServiceImpl implements DemoService {
 
     @Override
