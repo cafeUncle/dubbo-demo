@@ -13,7 +13,9 @@ public class DemoServiceImpl implements DemoService {
         strList.add("id:" + (id + 1));
         strList.add("id:" + id);
         strList.add("id:" + --id);
+
         System.out.println(strList);
+
         return strList;
     }
 }

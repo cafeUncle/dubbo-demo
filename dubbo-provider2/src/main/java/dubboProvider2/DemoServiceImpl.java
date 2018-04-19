@@ -17,6 +17,8 @@ public class DemoServiceImpl implements DemoService {
         strings.add("bbb");
         strings.add("ccc");
 
+        System.out.println(strings);
+
         return strings;
     }
 
