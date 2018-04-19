@@ -17,6 +17,6 @@
     发现带”@Reference”标签的属性，它会去寻找发布的provider是否有匹配的接口，有就自动注入。-->
     <dubbo:annotation package="dubboApi"/>
 
-    <dubbo:reference interface="dubboApi.DemoService" id="demoService" />
+    <dubbo:reference interface="dubboApi.DemoService" id="demoService"/>
 
 </beans>
