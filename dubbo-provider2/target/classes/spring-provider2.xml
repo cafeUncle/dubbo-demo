@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--定义了提供方应用信息，用于计算依赖关系；在 dubbo-admin 或 dubbo-monitor 会显示这个名字，方便辨识-->
+    <dubbo:application name="dubbo-provider2" owner="programmer" organization="dubbox"/>
+
+    <!--使用 zookeeper 注册中心暴露服务，注意要先开启 zookeeper-->
+    <!-- 可以通过group指定注册中心分组，可通过register配置是否注册到该注册中心以及subscribe配置是否从该注册中心订阅 -->
+    <dubbo:registry address="zookeeper://192.168.0.200:2181"/>
+
+    <!-- 用dubbo协议在20881端口暴露服务，同时启动两种provider时端口不能冲突，换一个端口 -->
+    <!-- 使用Dubbo协议的服务会在初始化时建立长连接-->
+    <dubbo:protocol name="dubbo" port="20881"/>
+
+    <!-- 注解方式装配, 不指定包名的话会在spring bean中查找配置了dubbo注解的对应实例的类 -->
+    <dubbo:annotation package="dubboProvider2"/>
+
+</beans>
