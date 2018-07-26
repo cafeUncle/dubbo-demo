@@ -6,22 +6,40 @@
        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 
+    <!--&lt;!&ndash; 配置应用名、注册中心,并配置客户端reference bean &ndash;&gt;-->
+
+    <!--&lt;!&ndash;定义了提供方应用信息，用于计算依赖关系；在 dubbo-admin 或 dubbo-monitor 会显示这个名字，方便辨识&ndash;&gt;-->
+    <!--<dubbo:application name="dubbo-consumer" owner="programmer" organization="dubbox"/>-->
+
+    <!--&lt;!&ndash;向 zookeeper 订阅 provider 的地址，由 zookeeper 定时推送&ndash;&gt;-->
+    <!--&lt;!&ndash; 可以通过group指定注册中心分组，可通过register配置是否注册到该注册中心以及subscribe配置是否从该注册中心订阅 &ndash;&gt;-->
+    <!--<dubbo:registry address="zookeeper://192.168.0.200:2181"/>-->
+
+    <!--&lt;!&ndash;客户端跟服务端不同的是客户端这边没有实现类，配置的dubbo:reference实际会生成一个spring bean实例, &ndash;&gt;-->
+    <!--&lt;!&ndash;使用 dubbo 协议调用定义好的接口,由该实例代理处理Dubbo请求，然后其他要调用处直接使用spring bean的方式使用这个实例即可&ndash;&gt;-->
+    <!--&lt;!&ndash;id即为spring bean的id,之后无论是在spring配置中使用ref="demoService"还是通过@Autowired注解都可以&ndash;&gt;-->
+    <!--<dubbo:reference id="demoService" interface="dubboApi.DemoService" version="1.0"/>-->
+
+    <!--&lt;!&ndash;开发测试环境可通过指定Url方式绕过注册中心直连指定的服务地址，避免注册中心中服务过多，启动建立连接时间过长 &ndash;&gt;-->
+    <!--&lt;!&ndash;<dubbo:reference id="demoService" interface="dubboApi.DemoService" version="1.0"&ndash;&gt;-->
+                     <!--&lt;!&ndash;url="dubbo://127.0.0.1:20880/"/>&ndash;&gt;-->
+
     <!-- 配置应用名、注册中心,并配置客户端reference bean -->
 
     <!--定义了提供方应用信息，用于计算依赖关系；在 dubbo-admin 或 dubbo-monitor 会显示这个名字，方便辨识-->
-    <dubbo:application name="dubbo-consumer" owner="programmer" organization="dubbox"/>
+    <dubbo:application name="zqsign-centre-external-arbitrate" owner="programmer" organization="sv26_dev"/>
 
     <!--向 zookeeper 订阅 provider 的地址，由 zookeeper 定时推送-->
     <!-- 可以通过group指定注册中心分组，可通过register配置是否注册到该注册中心以及subscribe配置是否从该注册中心订阅 -->
-    <dubbo:registry address="zookeeper://192.168.0.200:2181"/>
+    <dubbo:registry protocol="zookeeper" address="192.168.1.202:2181,192.168.1.203:2182,192.168.1.204:2183"/>
 
     <!--客户端跟服务端不同的是客户端这边没有实现类，配置的dubbo:reference实际会生成一个spring bean实例, -->
     <!--使用 dubbo 协议调用定义好的接口,由该实例代理处理Dubbo请求，然后其他要调用处直接使用spring bean的方式使用这个实例即可-->
     <!--id即为spring bean的id,之后无论是在spring配置中使用ref="demoService"还是通过@Autowired注解都可以-->
-    <dubbo:reference id="demoService" interface="dubboApi.DemoService" version="1.0"/>
+    <dubbo:reference id="arbitrateService" interface="com.zqsign.centre.arbitrate.external.ArbitrateService" version="1.0"  timeout="1200000"/>
 
     <!--开发测试环境可通过指定Url方式绕过注册中心直连指定的服务地址，避免注册中心中服务过多，启动建立连接时间过长 -->
     <!--<dubbo:reference id="demoService" interface="dubboApi.DemoService" version="1.0"-->
-                     <!--url="dubbo://127.0.0.1:20880/"/>-->
+    <!--url="dubbo://127.0.0.1:20880/"/>-->
 
 </beans>

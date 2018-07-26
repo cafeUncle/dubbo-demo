@@ -21,9 +21,10 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <!-- spring版本号 -->
         <spring.version>4.2.5.RELEASE</spring.version>
+        <dubbo.version>2.5.3</dubbo.version>
+        <zookeeper.version>3.4.9</zookeeper.version>
+        <zkclient.version>0.9</zkclient.version>
     </properties>
 
     <dependencies>
@@ -41,7 +42,7 @@
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.4.9</version>
+            <version>${zookeeper.version}</version>
         </dependency>
         <!-- dubbo -->
         <dependency>
@@ -57,9 +58,9 @@
         </dependency>
         <!-- zkclient 客户端 -->
         <dependency>
-            <groupId>com.github.sgroschupf</groupId>
+            <groupId>com.101tec</groupId>
             <artifactId>zkclient</artifactId>
-            <version>0.1</version>
+            <version>${zkclient.version}</version>
         </dependency>
     </dependencies>
 
